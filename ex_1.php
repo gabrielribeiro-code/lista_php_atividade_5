@@ -21,6 +21,14 @@ function contarNumeros($senha){
 
 }
 
+function contarCaracterEspecial($senha){
+    preg_match_all('/[@, #, $, &, *, °]/', $senha, $matches);
+    $quantidade = count($matches[0]);
+    return $quantidade;
+
+}
+
+
 
 
 function analisarSenha() {
@@ -40,6 +48,10 @@ echo "<br><br> A senha possui " . $resultado . " letra(s) minuscula(s)";
 $resultado = contarNumeros($senha);
 
 echo "<br><br> A senha possui " . $resultado . " Numeros";
+
+$resultado = contarCaracterEspecial($senha);
+
+echo "<br><br> A senha possui " . $resultado . " Caracteres Especiais";
 
 
 }

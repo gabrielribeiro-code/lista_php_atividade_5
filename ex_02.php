@@ -55,6 +55,13 @@ function palavraCurta($texto){
 
 }
 
+function palavrasRep($texto){
+
+    $conta = array_count_values($texto);
+    return $conta;
+
+}
+
 
 
 
@@ -84,6 +91,11 @@ echo "<br><br> A palavra mais longa é:  " . $resultado;
 $resultado = palavraCurta($texto);
 
 echo "<br><br> A palavra mais curta é:  " . $resultado;
+
+$resultado = palavrasRep($texto);
+
+echo "<br><br> A palavra que mais se repete é:  " . $resultado;
+
 
 
 }

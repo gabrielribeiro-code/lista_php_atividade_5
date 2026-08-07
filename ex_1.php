@@ -28,6 +28,12 @@ function contarCaracterEspecial($senha){
 
 }
 
+function tamanhoSenha($senha){
+$tamanho = strlen($senha);
+return $tamanho;
+
+}
+
 
 
 
@@ -52,6 +58,10 @@ echo "<br><br> A senha possui " . $resultado . " Numeros";
 $resultado = contarCaracterEspecial($senha);
 
 echo "<br><br> A senha possui " . $resultado . " Caracteres Especiais";
+
+$resultado = tamanhoSenha($senha);
+
+echo "<br><br> O tamanho da senha é de: " . $resultado . " Caracteres";
 
 
 }

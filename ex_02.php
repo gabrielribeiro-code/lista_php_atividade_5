@@ -41,7 +41,10 @@ function palavraLonga($texto){
 function palavraCurta($texto){
 
     $palavras = explode(" ", $texto);
-    $curta = '';
+    
+    if (empty($palavras[0])) return '';
+    
+    $curta = $palavras[0];
 
     foreach ($palavras as $palavra){
         if (strlen($palavra) < strlen($curta)){

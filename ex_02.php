@@ -41,10 +41,10 @@ function palavraLonga($texto){
 function palavraCurta($texto){
 
     $palavras = explode(" ", $texto);
+
+    if (empty($palavras[0])) return ''; //Verifica se ta totalmente vazio.
     
-    if (empty($palavras[0])) return '';
-    
-    $curta = $palavras[0];
+    $curta = $palavras[0]; // é para nao dar erro na primeira palavra.
 
     foreach ($palavras as $palavra){
         if (strlen($palavra) < strlen($curta)){

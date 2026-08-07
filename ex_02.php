@@ -56,10 +56,17 @@ function palavraCurta($texto){
 }
 
 function palavrasRep($texto){
+    $palavras = explode (" ", $texto); 
 
-    $conta = array_count_values($texto);
+    $conta = array_count_values($palavras);
+    
     return $conta;
 
+}
+
+function formatarTexto($texto){
+    $arrumar = ucwords($texto);
+    return $arrumar;
 }
 
 
@@ -67,7 +74,7 @@ function palavrasRep($texto){
 
 function processarTexto(){
 
-$texto = "Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar";
+$texto = "Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar. Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar. Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar";
 
 echo "O texto é: " . $texto;
 
@@ -94,11 +101,35 @@ echo "<br><br> A palavra mais curta é:  " . $resultado;
 
 $resultado = palavrasRep($texto);
 
-echo "<br><br> A palavra que mais se repete é:  " . $resultado;
+ $totalRepetidas = 0;
 
+    foreach ($resultado as $palavra => $quantidade){
+        if($quantidade > 1) {
+            $totalRepetidas++;
+        }
+    }
+    echo "<br><br> A quantidade de palavras repetidas é: " . $totalRepetidas;
+
+    arsort($resultado);
+    $cincoFrequentes = array_slice($resultado, 0, 5, true);
+
+    echo "<br><br> As 5 palavras que mais se repetem são: <br><br>";
+    foreach ($cincoFrequentes as $palavra => $quantidade){
+     echo "-- \"$palavra\" aparece $quantidade vezes<br>";
+
+    }
+
+
+   $resultado = formatarTexto($texto);
+
+   echo "<br><br> Texto arrumado <br>" . $resultado;
 
 
 }
+
+
+
+
 
 processarTexto();
 

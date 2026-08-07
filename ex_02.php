@@ -122,7 +122,7 @@ $resultado = palavrasRep($texto);
 
    $resultado = formatarTexto($texto);
 
-   echo "<br><br> Texto arrumado <br>" . $resultado;
+   echo "<br><br> Texto arrumado conforme pedido na atividade com a primeira letra sendo maiscula: <br><br>" . $resultado;
 
 
 }

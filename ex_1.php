@@ -34,6 +34,29 @@ return $tamanho;
 
 }
 
+function forcaSenha($senha){
+
+$tamanho = strlen($senha) >= 8;
+$maiscula = preg_match('/[A-Z]/', $senha);
+$minuscula = preg_match('/[a-z]/', $senha);
+$contarNumeros =  preg_match_all('/[0-9]/', $senha);
+$contarCaracteresEsp = preg_match_all('/[@, #, $, &, *, °]/', $senha);
+
+if($tamanho && $maiscula && $minuscula && $contarNumeros && $contarCaracteresEsp){
+    return "Forte";
+}elseif  ($tamanho || $maiscula || $minuscula || $contarNumeros || $contarCaracteresEsp){
+    return "Medio";
+
+}
+
+return "Fraca";
+
+$nivel = forcaSenha($senha);
+
+echo "O nivel da senha é: " . $nivel;
+
+}
+
 
 
 
@@ -63,6 +86,10 @@ $resultado = tamanhoSenha($senha);
 
 echo "<br><br> O tamanho da senha é de: " . $resultado . " Caracteres";
 
+
+$resultado  = forcaSenha($senha);
+
+echo "<br><br> O nivel da senha é: " . $resultado;
 
 }
 

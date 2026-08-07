@@ -69,12 +69,17 @@ function formatarTexto($texto){
     return $arrumar;
 }
 
+function espaco($texto){
+    $arrumando = preg_replace('/ +/', ' ', $texto);
+    return $arrumando;
+}
+
 
 
 
 function processarTexto(){
 
-$texto = "Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar. Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar. Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar";
+$texto = "Arrascaeta e craque    . O flamengo e selecao. E também o vini junior     vai voltar. Arrascaeta e craque            . O flamengo      e selecao           . E também o vini junior vai voltar. Arrascaeta e craque. O flamengo e selecao. E também o vini junior vai voltar";
 
 echo "O texto é: " . $texto;
 
@@ -124,6 +129,12 @@ $resultado = palavrasRep($texto);
 
    echo "<br><br> Texto arrumado conforme pedido na atividade com a primeira letra sendo maiscula: <br><br>" . $resultado;
 
+
+    $resultado = espaco($texto);
+
+    echo "<br><br> Texto corrigido sem espaços: <br><br>" . $resultado;
+
+    
 
 }
 

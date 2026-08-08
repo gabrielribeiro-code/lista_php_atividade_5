@@ -5,6 +5,8 @@ function contarConsultas($consultas){
     return $totalConsultas;
 }
 
+
+
 function contarPacientes($consultas){
 
 $pacientes = [];
@@ -16,6 +18,8 @@ $pacientes[$nome] = true;
 return count($pacientes);
 
 }
+
+
 
 function contarEspecial($consultas){
 $especialidades = [];
@@ -29,12 +33,12 @@ if(isset($especialidades[$especialidade])){
 
 }else{
     $especialidades[$especialidade] = 1;
-}
-}
+                }
+            }
 return $especialidades;
 
-}
-}
+        }
+    }
 
 
 
@@ -48,6 +52,7 @@ return $consultas;
 }
 
 
+
 function pAtendimento($consultas){
 
 $ordenadas = ordenacaoHorario($consultas);
@@ -55,6 +60,8 @@ $ordenadas = ordenacaoHorario($consultas);
 return  $ordenadas[0];
 
 }
+
+
 
 function uAtendimento($consultas){
 
@@ -65,6 +72,7 @@ $ultimo = count($ordenadas) -1;
 return $ordenadas[$ultimo];
 
 }
+
 
 
 function pesqPaciente($consultas, $nome){
@@ -79,6 +87,9 @@ if(strtolower($consulta["paciente"]) == strtolower($nome)) {
 return $resultado;
 
 }
+
+
+
 function orgHorarios($consultas){
 
 $horarios = [];
@@ -100,9 +111,7 @@ if(isset($horarios[$horario])){
 
 
 
-
-
-function organizarAgenda(){
+function organizarAgenda($consultas, $nomePesquisa){
 
 $consultas = [
     "paciente 1" => [
@@ -135,18 +144,33 @@ $consultas = [
 
 ];
 
-$resultado = contarConsultas($consultas);
+ 
 
-echo "O total de consultas é: " . $resultado;
+    $resultado = [
 
-$resultado = contarPacientes($consultas);
+        "totalConsultas" => contarConsultas($consultas),
 
-echo "O total de pacientes diferentes é: " . $resultado;
+        "pacientesDiferentes" => contarPacientes($consultas),
 
-$resultado = contarEspecial($consultas);
+        "consultasPorEspecialidade" => contarEspecial($consultas),
 
-echo "O total de especialidades é: " . $resultado;
+        "primeiroAtendimento" => pAtendimento($consultas),
 
+        "ultimoAtendimento" => uAtendimento($consultas),
+
+        "listaOrdenada" => ordenacaoHorario($consultas),
+
+        "pesquisaPaciente" => pesqPaciente($consultas, $nomePesquisa),
+
+        "horariosDuplicados" => orgHorarios($consultas)
+    ];
+
+    return $resultado;
 }
+   $nomepEsquisa = readline("digite o nome do paciente: ");
+
+   $resultado = organizarAgenda($consultas, $nomePesquisa);
+
+   print_r($resultado);
 
 ?>

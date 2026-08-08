@@ -5,6 +5,18 @@ function contarConsultas($consultas){
     return $totalConsultas;
 }
 
+function contarPacientes($consultas){
+
+$pacientes = [];
+
+foreach ($consultas as $consulta){
+$nome = $consulta["paciente"];
+
+$pacientes[$nome] = true;
+
+}
+return count($pacientes);
+}
 
 
 
@@ -54,6 +66,10 @@ $consultas = [
 $resultado = contarConsultas($consultas);
 
 echo "O total de consultas é: " . $resultado;
+
+$resultado = contarPacientes($consultas);
+
+echo "O total de pacientes diferentes é: " . $resultado;
 
 }
 
